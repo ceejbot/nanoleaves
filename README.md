@@ -1,6 +1,6 @@
 # nanoleaves
 
-A command-line tool for interacting with your Nanoleaf Aurora. Also includes a full API client for the Aurora! IN PROGRESS
+A command-line tool for interacting with your Nanoleaf Aurora. Also includes a full API client for the Aurora!
 
 ## CLI usage
 
@@ -8,9 +8,10 @@ Provide the IP address of your Aurora in the environment variable `AURORA_HOST` 
 
 To generate a token, hold the power key until the light starts flashing, then run `nanoleaves token`.
 
-```sh
+```
 $ nanoleaves --help
 Commands:
+  animation <name>          get details about the given animation effect
   brightness [number]       get or set the overall brightness
   effect [name]             get or set the current effect
   effects                   list available effects
@@ -19,6 +20,7 @@ Commands:
   off                       turn your Aurora off
   on                        turn your Aurora on
   saturation [number]       get or set the overall saturation
+  temp [number]             get or set the overall color temperature
   token                     generate a new API access token
 
 Options:
@@ -31,8 +33,8 @@ Options:
 ```js
 const AuroraAPI = require('nanoleaves');
 const aurora = new AuroraAPI({
-	host: '10.0.0.2',
-	token: 'your-api-token'
+    host: '10.0.0.2',
+    token: 'your-api-token'
 });
 
 aurora.info().then(info =>
@@ -60,6 +62,7 @@ All API functions return promises.
 * `setHue(v)` - set the hue for all panels; 0-360
 * `temperature()` - get the color temperature for all panels
 * `setTemperature(v)` - set the color temperature for all panels; 1200-6500
+* `animation(name)` - get detailed information about a specific animation effect
 
 ## License
 

@@ -57,14 +57,25 @@ class Aurora
 		return this.req.put('/identify').then(rez => rez.data);
 	}
 
-	allEffects()
+	animation(name)
+	{
+		const body = { write: {
+			command : 'request',
+			animName: name,
+			version : '1.0',
+		}};
+
+		return this.req.put('/effects', body).then(rez => rez.data);
+	}
+
+	animations()
 	{
 		const body = { write: {
 			command : 'requestAll',
 			version : '1.0',
 		}};
 
-		return this.req.put('/effects', body).then(rez => rez.data);
+		return this.req.put('/effects', body).then(rez => rez.data.animations);
 	}
 
 	effects()
