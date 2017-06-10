@@ -2,7 +2,7 @@
 
 A command-line tool for interacting with your Nanoleaf Aurora. Also includes a full API client for the Aurora!
 
-[![Build Status](https://travis-ci.org/ceejbot/nanoleaves.svg?branch=master)](https://travis-ci.org/ceejbot/nanoleaves) [![Coverage Status](https://coveralls.io/repos/github/ceejbot/nanoleaves/badge.svg?branch=master)](https://coveralls.io/github/ceejbot/nanoleaves?branch=master)
+[![Build Status](https://travis-ci.org/ceejbot/nanoleaves.svg?branch=master)](https://travis-ci.org/ceejbot/nanoleaves) [![Coverage Status](https://coveralls.io/repos/github/ceejbot/nanoleaves/badge.svg?branch=master)](https://coveralls.io/github/ceejbot/nanoleaves?branch=master) [![on npm](http://img.shields.io/ceejbot/v/nanoleaves.svg?style=flat)](https://www.npmjs.org/package/nanoleaves)
 
 ## CLI usage
 
@@ -50,6 +50,8 @@ aurora.info().then(info =>
     console.log(info);
 });
 ```
+
+The constructor will default to the values in the above-mentioned environment variables if present.
 
 All API functions return promises.
 
