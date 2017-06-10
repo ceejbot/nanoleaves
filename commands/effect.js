@@ -14,13 +14,13 @@ function handler(argv)
 	{
 		return aurora.setEffect(argv.name).then(() =>
 		{
-			console.log(`Effect is now ${chalk.bold(argv.name)}.`);
+			console.log(`effect ➜ ${chalk.bold(argv.name)}`);
 		});
 	}
 
 	aurora.effect().then(name =>
 	{
-		console.log(`The current effect is ${chalk.bold(name)}.`);
+		console.log(`running effect: ${chalk.bold(name)}`);
 	});
 }
 

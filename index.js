@@ -1,4 +1,4 @@
-//  /effects/list
+'use strict';
 
 const axios = require('axios');
 
@@ -112,7 +112,7 @@ class Aurora
 				panels: [],
 			};
 
-			while(ints.length)
+			while (ints.length)
 			{
 				const p = {
 					id: ints.shift(),

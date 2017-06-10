@@ -14,13 +14,13 @@ function handler(argv)
 	{
 		return aurora.setBrightness(argv.number).then(() =>
 		{
-			console.log(`Brightness set to ${chalk.magenta(argv.number)}.`);
+			console.log(`brightness ➜ ${chalk.bold.yellow(argv.number)}`);
 		});
 	}
 
 	aurora.brightness().then(v =>
 	{
-		console.log(`Brightness set to ${chalk.magenta(v)}.`);
+		console.log(`brightness == ${chalk.bold.yellow(v)}`);
 	});
 }
 

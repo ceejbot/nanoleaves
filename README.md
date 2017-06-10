@@ -18,6 +18,7 @@ Commands:
   effect [name]             get or set the current effect
   effects                   list available effects
   hsb <hue> <sat> <bright>  set the hue, sat, and brightness for all panels
+  hue [number]              get or set the hue for all panels
   info                      get all available info about your Aurora
   layout                    show the panel layout
   off                       turn your Aurora off

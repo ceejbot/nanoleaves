@@ -14,13 +14,13 @@ function handler(argv)
 	{
 		return aurora.setSaturation(argv.number).then(() =>
 		{
-			console.log(`Saturation set to ${chalk.magenta(argv.number)}.`);
+			console.log(`saturation ➜ ${chalk.bold.magenta(argv.number)}`);
 		});
 	}
 
 	aurora.saturation().then(v =>
 	{
-		console.log(`Saturation set to ${chalk.magenta(v)}.`);
+		console.log(`saturation == ${chalk.bold.magenta(v)}`);
 	});
 }
 

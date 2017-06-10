@@ -9,7 +9,6 @@ function builder(yargs) {}
 function handler(argv)
 {
 	const aurora = new API();
-
 	const opts = {
 		hue: argv.hue,
 		sat: argv.sat,
@@ -17,9 +16,9 @@ function handler(argv)
 	};
 	aurora.multistate(opts).then(rez =>
 	{
-		console.log(`hue: ${chalk.magenta(argv.hue)}
-sat: ${argv.saturation},
-brightness: ${argv.brightness}`);
+		console.log(`hue ➜ ${chalk.bold.cyan(argv.hue)}
+sat ➜ ${chalk.bold.magenta(argv.sat)},
+brightness ➜ ${chalk.bold.yellow(argv.bright)}`);
 	});
 }
 

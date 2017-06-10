@@ -49,21 +49,20 @@ describe('nanoleaves', function()
 	it('a giant list of functions just call state()', function()
 	{
 		const api = new Aurora();
-		const stub = sinon.stub(api.req, 'get').callsFake(() =>
+		const stub = sinon.stub(api, 'state').callsFake(() =>
 		{
 			return Promise.resolve({ data: { value: 'ok' }});
 		});
 
 		const funcs = ['mode', 'brightness', 'saturation', 'hue', 'temperature'];
-		const all = funcs.map(f =>
-		{
-			return api[f].apply(api);
-		});
+		const types = ['colorMode', 'brightness', 'sat', 'hue', 'ct'];
+		const all = funcs.map(f => api[f]());
 
 		return Promise.all(all).then(() =>
 		{
 			stub.called.must.be.true();
 			stub.callCount.must.equal(funcs.length);
+			types.forEach(t => { stub.calledWith(t).must.be.true(); });
 		});
 	});
 
@@ -71,20 +70,20 @@ describe('nanoleaves', function()
 	{
 		const api = new Aurora();
 		const funcs = ['on', 'off', 'setBrightness', 'setSaturation', 'setHue', 'setTemperature'];
-		const stub = sinon.stub(api.req, 'get').callsFake(() =>
+		const types = ['on', 'brightness', 'sat', 'hue', 'ct'];
+
+		const stub = sinon.stub(api, 'setState').callsFake(() =>
 		{
 			return Promise.resolve({ data: { value: 'ok' }});
 		});
 
-		const all = funcs.map(f =>
-		{
-			return api[f].apply(api, ['value']);
-		});
+		const all = funcs.map(f => api[f]('value'));
 
 		return Promise.all(all).then(() =>
 		{
 			stub.called.must.be.true();
 			stub.callCount.must.equal(funcs.length);
+			types.forEach(t => { stub.calledWith(t).must.be.true(); });
 		});
 	});
 

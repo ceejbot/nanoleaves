@@ -14,13 +14,13 @@ function handler(argv)
 	{
 		return aurora.setTemperature(argv.number).then(() =>
 		{
-			console.log(`Color temperature set to ${chalk.bold(argv.number)}.`);
+			console.log(`color temperature ➜ ${chalk.bold(argv.number)}`);
 		});
 	}
 
 	aurora.temperature().then(v =>
 	{
-		console.log(`Color temperature is ${chalk.bold(v)}.`);
+		console.log(`color temperature == ${chalk.bold(v)}`);
 	});
 }
 

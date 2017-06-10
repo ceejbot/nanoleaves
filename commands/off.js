@@ -12,7 +12,7 @@ function handler(argv)
 
 	aurora.off().then(() =>
 	{
-		console.log(`Your Aurora is now ${chalk.bold('off')}.`);
+		console.log(`Aurora ➜ ${chalk.bold('off')}`);
 	});
 }
 

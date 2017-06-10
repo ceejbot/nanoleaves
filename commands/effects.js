@@ -1,8 +1,10 @@
 'use strict';
 
 const
-	API   = require('../index'),
-	chalk = require('chalk');
+	API     = require('../index'),
+	chalk   = require('chalk'),
+	columns = require('cli-columns')
+	;
 
 function builder(yargs) {}
 
@@ -12,11 +14,8 @@ function handler(argv)
 
 	aurora.effects().then(effects =>
 	{
-		console.log(`There are ${effects.length} effects:`);
-		effects.forEach(e =>
-		{
-			console.log(`    ${chalk.blue(e)}`);
-		});
+		console.log(`${chalk.bold(effects.length)} effects:`);
+		console.log(columns(effects));
 	});
 }
 
