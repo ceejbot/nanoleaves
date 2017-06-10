@@ -26,7 +26,9 @@ class Aurora
 	{
 		return this.req.get(`/state/${field}`).then(rez =>
 		{
-			return rez.data.value;
+			if (rez.data.hasOwnProperty('value'))
+				return rez.data.value;
+			return rez.data;
 		});
 	}
 
@@ -215,6 +217,7 @@ class Aurora
 	}
 }
 
+Aurora.COLOR_MODES = new Set(['effect', 'hs', 'ct']);
 Aurora.ANIM_TYPES = new Set(['highlight', 'wheel', 'flow', 'explode', 'fade']);
 Aurora.DIRECTIONS = new Set(['outwards', 'up', 'down', 'left', 'right']);
 
