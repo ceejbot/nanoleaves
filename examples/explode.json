@@ -1,0 +1,39 @@
+{
+	"animName": "explosions",
+	"description": "this is an explode type",
+	"animType": "explode",
+	"colorType": "HSB",
+	"palette": [{
+			"hue": 0,
+			"saturation": 100,
+			"brightness": 100
+		},
+		{
+			"hue": 120,
+			"saturation": 100,
+			"brightness": 100
+		},
+		{
+			"hue": 240,
+			"saturation": 100,
+			"brightness": 100
+		}
+	],
+	"explodeFactor": 0.5,
+	"direction": "outwards",
+	"loop": true,
+	"flowFactor": 0,
+	"windowSize": 2,
+	"brightnessRange": {
+		"minValue": 50,
+		"maxValue": 75
+	},
+	"transTime": {
+		"minValue": 25,
+		"maxValue": 100
+	},
+	"delayTime": {
+		"minValue": 5,
+		"maxValue": 10
+	}
+}

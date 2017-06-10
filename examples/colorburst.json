@@ -1,0 +1,58 @@
+{
+	"explodeFactor": 0.5,
+	"flowFactor": 0,
+	"animName": "Bursting",
+	"colorType": "HSB",
+	"direction": "left",
+	"animType": "explode",
+	"windowSize": 2,
+	"brightnessRange": {
+		"minValue": 0,
+		"maxValue": 0
+	},
+	"transTime": {
+		"minValue": 52,
+		"maxValue": 52
+	},
+	"loop": true,
+	"palette": [{
+			"brightness": 99,
+			"hue": 227,
+			"saturation": 100
+		},
+		{
+			"brightness": 100,
+			"hue": 104,
+			"saturation": 100
+		},
+		{
+			"brightness": 100,
+			"hue": 24,
+			"saturation": 100
+		},
+		{
+			"brightness": 100,
+			"hue": 275,
+			"saturation": 100
+		},
+		{
+			"brightness": 100,
+			"hue": 54,
+			"saturation": 91
+		},
+		{
+			"brightness": 100,
+			"hue": 311,
+			"saturation": 100
+		},
+		{
+			"brightness": 100,
+			"hue": 0,
+			"saturation": 0
+		}
+	],
+	"delayTime": {
+		"minValue": 5,
+		"maxValue": 5
+	}
+}

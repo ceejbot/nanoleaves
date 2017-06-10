@@ -1,8 +1,6 @@
 //  /effects/list
 
-const
-	axios = require('axios')
-	;
+const axios = require('axios');
 
 class Aurora
 {
@@ -78,6 +76,16 @@ class Aurora
 		return this.req.put('/effects', body).then(rez => rez.data.animations);
 	}
 
+	addAnimation(effect)
+	{
+		const write = Object.assign({
+			command: 'add',
+			version: '1.0',
+		}, effect);
+
+		return this.req.put('/effects', { write }).then(rez => rez.data);
+	}
+
 	effects()
 	{
 		return this.req.get('/effects/list').then(rez => rez.data);
@@ -91,6 +99,16 @@ class Aurora
 	setEffect(name)
 	{
 		return this.req.put('/effects', { select: name }).then(rez => rez.data);
+	}
+
+	layout()
+	{
+		return this.req.get('/panelLayout/layout').then(rez => rez.data.layoutData);
+	}
+
+	orientation()
+	{
+		return this.req.get('/panelLayout/globalOrientation').then(rez => rez.data.value);
 	}
 
 	on()
@@ -163,5 +181,7 @@ class Aurora
 		return this.setState('ct', Number(v));
 	}
 }
+
+Aurora.ANIM_TYPES = new Set(['highlight', 'wheel', 'flow', 'explode', 'fade']);
 
 module.exports = Aurora;

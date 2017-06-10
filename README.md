@@ -22,6 +22,7 @@ Commands:
   saturation [number]       get or set the overall saturation
   temp [number]             get or set the overall color temperature
   token                     generate a new API access token
+  upload <filename>         upload a json file containing a new animation effect
 
 Options:
   --version  Show version number                                       [boolean]
@@ -39,7 +40,7 @@ const aurora = new AuroraAPI({
 
 aurora.info().then(info =>
 {
-	console.log(info);
+	  console.log(info);
 });
 ```
 
@@ -48,21 +49,23 @@ All API functions return promises.
 * `newToken()` - generate a new API token
 * `info()` - return all info about the Aurora
 * `identify()` - flash panels
-* `effects()` - return a list of the names of all effects
-* `effect()` - get the name of the current effect
-* `setEffect(name)` - set the active effect by name
-* `on()` - turn the Aurora on
-* `off()` - turn the Aurora off
-* `mode()` - get the Aurora's current color mode
+* `animation(name)` - get detailed information about a specific animation effect
 * `brightness()` - get the brightness for all panels
 * `setBrightness(v)` - set the brightness for all panels; 0-100
-* `saturation()`  - get the saturation for all panels
-* `setSaturation(v)` - set the saturation for all panels; 0-100
+* `effect()` - get the name of the current effect
+* `effects()` - return a list of the names of all effects
+* `setEffect(name)` - set the active effect by name
 * `hue()` - get the hue for all panels
 * `setHue(v)` - set the hue for all panels; 0-360
+* `layout()` - get panel layout data
+* `mode()` - get the Aurora's current color mode
+* `off()` - turn the Aurora off
+* `on()` - turn the Aurora on
+* `orientation()` - get the global orientation; 0-360
+* `saturation()`  - get the saturation for all panels
+* `setSaturation(v)` - set the saturation for all panels; 0-100
 * `temperature()` - get the color temperature for all panels
 * `setTemperature(v)` - set the color temperature for all panels; 1200-6500
-* `animation(name)` - get detailed information about a specific animation effect
 
 ## License
 

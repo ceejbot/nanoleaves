@@ -1,8 +1,8 @@
 'use strict';
 
 const
-	API    = require('../index'),
-	chalk  = require('chalk');
+	API   = require('../index'),
+	chalk = require('chalk');
 
 function builder(yargs) {}
 
@@ -25,7 +25,7 @@ function handler(argv)
 }
 
 module.exports = {
-	command:  'saturation [number]',
+	command : 'saturation [number]',
 	describe: 'get or set the overall saturation',
 	builder,
 	handler

@@ -1,8 +1,8 @@
 'use strict';
 
 const
-	API    = require('../index'),
-	chalk  = require('chalk');
+	API   = require('../index'),
+	chalk = require('chalk');
 
 function builder(yargs) {}
 
