@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "C J Silverio <ceejceej@gmail.com>",
   "bin": {
-    "nanoleaves": "nanoleaves.js"
+    "nanoleaves": "bin/nanoleaves.js"
   },
   "bugs": {
     "url": "https://github.com/ceejbot/nanoleaves/issues"
