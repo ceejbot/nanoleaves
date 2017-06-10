@@ -1,6 +1,6 @@
 {
   "name": "nanoleaves",
-  "description": "An API client & a command-line tool for the Nanoleaf Aurora light.",
+  "description": "An API client & command-line tool for the Nanoleaf Aurora light.",
   "version": "1.0.0",
   "author": "C J Silverio <ceejceej@gmail.com>",
   "bin": {

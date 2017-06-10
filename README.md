@@ -2,6 +2,8 @@
 
 A command-line tool for interacting with your Nanoleaf Aurora. Also includes a full API client for the Aurora!
 
+[![Build Status](https://travis-ci.org/ceejbot/nanoleaves.svg?branch=master)](https://travis-ci.org/ceejbot/nanoleaves) [![Coverage Status](https://coveralls.io/repos/github/ceejbot/nanoleaves/badge.svg?branch=master)](https://coveralls.io/github/ceejbot/nanoleaves?branch=master)
+
 ## CLI usage
 
 Provide the IP address of your Aurora in the environment variable `AURORA_HOST` and your API access token in `AURORA_TOKEN`. If your AURORA is listening on an unusual port, use `AURORA_PORT`.
@@ -42,7 +44,7 @@ const aurora = new AuroraAPI({
 
 aurora.info().then(info =>
 {
-	  console.log(info);
+    console.log(info);
 });
 ```
 
