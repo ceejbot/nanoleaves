@@ -2,26 +2,23 @@
 
 const
 	API    = require('../index'),
-    chalk  = require('chalk'),
-    aurora = new API({
-		host: process.env.HOST,
-		port: process.env.PORT,
-		token: process.env.ACCESS_TOKEN
-	});
+	chalk  = require('chalk');
 
 function builder(yargs) {}
 
 function handler(argv)
 {
+	const aurora = new API();
+
 	aurora.on().then(() =>
 	{
-		console.log('Your Aurora is now on.');
+		console.log(`Your Aurora is now ${chalk.bold('on')}.`);
 	});
 }
 
 module.exports = {
 	command: 'on',
-	describe: 'turn your aurora on',
+	describe: 'turn your Aurora on',
 	builder,
 	handler
 };

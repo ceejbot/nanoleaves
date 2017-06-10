@@ -4,10 +4,10 @@
 
 require('dotenv').config();
 
-const argv = require('yargs')
-		.commandDir('../commands')
-		.recommendCommands()
-		.version()
-		.help()
-		.argv;
+require('yargs')
+	.commandDir('../commands')
+	.recommendCommands()
+	.version()
+	.help()
+	.argv;
 

@@ -2,17 +2,14 @@
 
 const
 	API    = require('../index'),
-    chalk  = require('chalk'),
-    aurora = new API({
-		host: process.env.HOST,
-		port: process.env.PORT,
-		token: process.env.ACCESS_TOKEN
-	});
+	chalk  = require('chalk');
 
 function builder(yargs) {}
 
 function handler(argv)
 {
+	const aurora = new API();
+
 	aurora.effects().then(effects =>
 	{
 		console.log(`There are ${effects.length} effects:`);

@@ -16,7 +16,15 @@
     "suncalc": "~1.8.0",
     "yargs": "~8.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "coveralls": "~2.13.1",
+    "eslint-config-ceejbot": "~1.0.4",
+    "mocha": "~3.4.2",
+    "must": "~0.13.4",
+    "nyc": "~11.0.2",
+    "sinon": "~2.3.2",
+    "xo": "~0.18.2"
+  },
   "directories": {
     "commands": "commands"
   },
@@ -34,6 +42,10 @@
     "url": "git+https://github.com/ceejbot/nanoleaves.git"
   },
   "scripts": {
+    "lint": "xo",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "xo": {
+    "extends": "eslint-config-ceejbot"
   }
 }

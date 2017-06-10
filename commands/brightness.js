@@ -2,17 +2,14 @@
 
 const
 	API    = require('../index'),
-    chalk  = require('chalk'),
-    aurora = new API({
-		host: process.env.HOST,
-		port: process.env.PORT,
-		token: process.env.ACCESS_TOKEN
-	});
+	chalk  = require('chalk');
 
 function builder(yargs) {}
 
 function handler(argv)
 {
+	const aurora = new API();
+
 	if (argv.number)
 	{
 		return aurora.setBrightness(argv.number).then(() =>
@@ -23,7 +20,7 @@ function handler(argv)
 
 	aurora.brightness().then(v =>
 	{
-			console.log(`Brightness set to ${chalk.magenta(v)}.`);
+		console.log(`Brightness set to ${chalk.magenta(v)}.`);
 	});
 }
 
