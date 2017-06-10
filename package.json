@@ -43,6 +43,7 @@
     "url": "git+https://github.com/ceejbot/nanoleaves.git"
   },
   "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "xo",
     "test": "nyc mocha -R spec test.js"
   },
