@@ -12,7 +12,7 @@ function handler(argv)
 	console.log('Hold the power button until the LED flashes, then run this.');
 	aurora.newToken().then(token =>
 	{
-		console.log(`Your new API token is ${chalk.bold(token)}.
+		console.log(`Your new API token: ${chalk.bold(token)}
 Export this in the AURORA_TOKEN environment variable.`);
 	});
 }

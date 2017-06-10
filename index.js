@@ -12,6 +12,7 @@ class Aurora
 		opts.port = opts.port || process.env.AURORA_PORT || 16021;
 		opts.host = opts.host || process.env.AURORA_HOST;
 		opts.token = opts.token || process.env.AURORA_TOKEN;
+		this.apibase = `http://${opts.host}:${opts.port}/api/beta`;
 
 		this.req = axios.create({
 			baseURL: `http://${opts.host}:${opts.port}/api/beta/${opts.token}`
@@ -40,7 +41,10 @@ class Aurora
 
 	newToken()
 	{
-		return this.req.post('/new').then(rez => rez.data);
+		return axios.post(`${this.apibase}/new`).then(rez =>
+		{
+			return rez.data.auth_token;
+		});
 	}
 
 	info()
@@ -51,6 +55,16 @@ class Aurora
 	identify()
 	{
 		return this.req.put('/identify').then(rez => rez.data);
+	}
+
+	allEffects()
+	{
+		const body = { write: {
+			command : 'requestAll',
+			version : '1.0',
+		}};
+
+		return this.req.put('/effects', body).then(rez => rez.data);
 	}
 
 	effects()
