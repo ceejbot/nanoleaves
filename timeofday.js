@@ -5,30 +5,7 @@ const
 
 const API = require('./index');
 
-const aurora = new API({
-	host: process.env.HOST,
-	port: process.env.PORT,
-	token: process.env.AURORA_TOKEN
-});
-
-var effects = [];
-
-aurora.effects().then(e =>
-{
-	effects = e;
-	return aurora.effect();
-})
-.then(r =>
-{
-	console.log(`we are running effect ${r}`);
-	return aurora.setEffect(effects[Math.floor(Math.random() * effects.length)]);
-}).then(() =>
-{
-	return aurora.effect();
-}).then(r =>
-{
-	console.log(`now running effect ${r}`);
-});
+const aurora = new API();
 
 // Goal: a clock made with 12 panels
 // Hour hand in deep color, minute hand in lighter color.

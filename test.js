@@ -1,4 +1,5 @@
 /*global describe:true, it:true, before:true, after:true, beforeEach: true, afterEach:true */
+/*eslint prefer-arrow-callback:0*/
 'use strict';
 
 var
@@ -29,6 +30,21 @@ describe('nanoleaves', function()
 		{
 			stub.called.must.be.true();
 			stub.calledWith('/state/field').must.be.true();
+			r.must.equal('ok');
+		});
+	});
+
+	it('state() handles responses without a value field', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'get').callsFake(() =>
+		{
+			return Promise.resolve({ data: 'hello' });
+		});
+		return api.state('field').then(r =>
+		{
+			stub.called.must.be.true();
+			r.must.equal('hello');
 		});
 	});
 
@@ -87,4 +103,190 @@ describe('nanoleaves', function()
 		});
 	});
 
+	it('orientation() calls the correct api endpoint', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'get').callsFake(() =>
+		{
+			return Promise.resolve({ data: { value: 'ok' }});
+		});
+
+		return api.orientation().then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/panelLayout/globalOrientation').must.be.true();
+		});
+	});
+
+	it('layout() calls the correct api endpoint', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'get').callsFake(() =>
+		{
+			return Promise.resolve({ data: { layoutData: '1 150 1 1 1' }});
+		});
+
+		return api.layout().then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/panelLayout/layout').must.be.true();
+		});
+	});
+
+	it('effect() calls the correct api endpoint', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'get').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		return api.effect().then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/effects/select').must.be.true();
+		});
+	});
+
+	it('effects() calls the correct api endpoint', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'get').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		return api.effects().then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/effects/list').must.be.true();
+		});
+	});
+
+	it('setEffect() calls the correct api endpoint', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'put').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		return api.setEffect('foo').then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/effects', { select: 'foo' }).must.be.true();
+		});
+	});
+
+	it('curiously, animations() does a PUT to read all', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'put').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		return api.animations().then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/effects').must.be.true();
+		});
+	});
+
+	it('reading a single animation isn\'t very RESTful either', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'put').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		const body = { write: { command : 'request',
+			animName: 'foo',
+			version : '1.0' }};
+
+		return api.animation('foo').then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/effects', body).must.be.true();
+		});
+	});
+
+	it('display() does the same thing; it\'s like this was the whole API once', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'put').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		return api.display([1, 2, 3, 4]).then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/effects').must.be.true();
+		});
+	});
+
+	it('addAnimation() is also a PUT to the same endpoint', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'put').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		return api.addAnimation({ foo: 'bar' }).then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/effects').must.be.true();
+		});
+	});
+
+	it('info() hits GET /', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'get').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		return api.info().then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/').must.be.true();
+		});
+	});
+
+	it('identify() does a PUT but I am okay with this', function()
+	{
+		const api = new Aurora();
+		const stub = sinon.stub(api.req, 'put').callsFake(() =>
+		{
+			return Promise.resolve({ data: { }});
+		});
+
+		return api.identify().then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith('/identify').must.be.true();
+		});
+	});
+
+	it('newToken() POSTs to /new', function()
+	{
+		const axios = require('axios');
+		const stub = sinon.stub(axios, 'post').callsFake(() =>
+		{
+			return Promise.resolve({ data: { auth_token: 'deadbeef'}});
+		});
+
+		const api = new Aurora();
+		return api.newToken().then(r =>
+		{
+			stub.called.must.be.true();
+			stub.calledWith(api.apibase + '/new').must.be.true();
+			r.must.equal('deadbeef');
+			stub.restore();
+		});
+	});
 });

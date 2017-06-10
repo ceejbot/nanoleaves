@@ -21,9 +21,11 @@ Commands:
   hue [number]              get or set the hue for all panels
   info                      get all available info about your Aurora
   layout                    show the panel layout
+  mode                      get the current color mode for the Aurora
   off                       turn your Aurora off
   on                        turn your Aurora on
   panels                    show the panel ids
+  random                    run a randomly-chosen effect
   saturation [number]       get or set the overall saturation
   temp [number]             get or set the overall color temperature
   token                     generate a new API access token
