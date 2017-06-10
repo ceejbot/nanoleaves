@@ -1,6 +1,6 @@
 {
   "name": "nanoleaves",
-  "description": "Some javascript Nanoleaf Aurora tools.",
+  "description": "An API client & a command-line tool for the Nanoleaf Aurora light.",
   "version": "1.0.0",
   "author": "C J Silverio <ceejceej@gmail.com>",
   "bin": {
@@ -43,7 +43,7 @@
   },
   "scripts": {
     "lint": "xo",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc mocha -R spec test.js"
   },
   "xo": {
     "extends": "eslint-config-ceejbot"

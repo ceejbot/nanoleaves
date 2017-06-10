@@ -183,5 +183,6 @@ class Aurora
 }
 
 Aurora.ANIM_TYPES = new Set(['highlight', 'wheel', 'flow', 'explode', 'fade']);
+Aurora.DIRECTIONS = new Set(['outwards', 'up', 'down', 'left', 'right']);
 
 module.exports = Aurora;

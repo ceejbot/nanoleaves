@@ -66,6 +66,7 @@ All API functions return promises.
 * `setSaturation(v)` - set the saturation for all panels; 0-100
 * `temperature()` - get the color temperature for all panels
 * `setTemperature(v)` - set the color temperature for all panels; 1200-6500
+* `addAnimation(json)` - store a new animation effect on the Aurora
 
 ## License
 
