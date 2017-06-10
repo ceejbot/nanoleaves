@@ -103,7 +103,28 @@ class Aurora
 
 	layout()
 	{
-		return this.req.get('/panelLayout/layout').then(rez => rez.data.layoutData);
+		return this.req.get('/panelLayout/layout').then(rez =>
+		{
+			const ints = rez.data.layoutData.split(' ').map(i => Number(i));
+			const result = {
+				count: ints.shift(),
+				sideLength: ints.shift(),
+				panels: [],
+			};
+
+			while(ints.length)
+			{
+				const p = {
+					id: ints.shift(),
+					x: ints.shift(),
+					y: ints.shift(),
+					orientation: ints.shift()
+				};
+				result.panels.push(p);
+			}
+
+			return result;
+		});
 	}
 
 	orientation()
@@ -179,6 +200,18 @@ class Aurora
 		if (v > 6500) v = 6500;
 
 		return this.setState('ct', Number(v));
+	}
+
+	display(panels)
+	{
+		const write = {
+			command: 'display',
+			version: '1.0',
+			animType: 'static',
+			loop: false,
+			animData: panels.join(' ')
+		};
+		return this.req.put('/effects', { write }).then(rez => rez.data);
 	}
 }
 

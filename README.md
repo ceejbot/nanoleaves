@@ -17,8 +17,10 @@ Commands:
   effects                   list available effects
   hsb <hue> <sat> <bright>  set the hue, sat, and brightness for all panels
   info                      get all available info about your Aurora
+  layout                    show the panel layout
   off                       turn your Aurora off
   on                        turn your Aurora on
+  panels                    show the panel ids
   saturation [number]       get or set the overall saturation
   temp [number]             get or set the overall color temperature
   token                     generate a new API access token
