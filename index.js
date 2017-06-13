@@ -292,7 +292,7 @@ class Aurora
 	display(animation)
 	{
 		const write = Object.assign({
-			command: 'add',
+			command: 'display',
 			version: '1.0',
 		}, animation.serialize());
 		write.loop = write.loop || false;

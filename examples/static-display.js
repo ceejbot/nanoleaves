@@ -15,10 +15,10 @@ const list = [
 	{ id: 198, frames: [{ r: 0, g: 60, b: 175, w: 0, transition: 50 }]},
 	{ id: 167, frames: [{ r: 100, g: 80, b: 150, w: 0, transition: 50 }]},
 	{ id: 241, frames: [{ r: 0, g: 100, b: 125, w: 0, transition: 50 }]},
-	{ id: 164, frames: [{ r: 0, g: 120, b: 100, w: 0, transition: 50 }]},
+	{ id: 164, frames: [{ r: 40, g: 120, b: 100, w: 0, transition: 50 }]},
 	{ id: 72, frames: [{ r: 0, g: 140, b: 75, w: 0, transition: 50 }]},
 	{ id: 100, frames: [{ r: 100, g: 160, b: 50, w: 0, transition: 50 }]},
-	{ id: 170, frames: [{ r: 0, g: 180, b: 25, w: 0, transition: 50 }]},
+	{ id: 170, frames: [{ r: 200, g: 0, b: 0, w: 0, transition: 50 }]},
 	{ id: 183, frames: [{ r: 0, g: 200, b: 0, w: 0, transition: 50 }]},
 ];
 

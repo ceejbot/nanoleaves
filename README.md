@@ -81,7 +81,9 @@ All API functions return promises.
 
 ```js
 {
-    "name": "I am a static display",
+    "animName": "I am a static display",
+    "animType": "static",
+    "loop": false,
     "panels": {
         "60": {
             "id": 60, // yes this is redundant
@@ -103,6 +105,8 @@ All API functions return promises.
 ```
 
 The `setPanel()` function takes a single frame object, with id and frame array, and updates *just* that panel in the current static display.
+
+There's an example of setting an entire static animation display in [examples/static-display.js](examples/static-display.js). Use `nanoleaves panels` to get a list of valid panel ids.
 
 ## License
 
