@@ -1,0 +1,8 @@
+{
+	"command" : "add",
+	"version" : "1.0",
+	"animName" : "Test Static Display",
+	"animType" : "static",
+	"animData" : "3 82 1 255 0 255 0 20 60 1 0 255 255 0 20 118 1 0 0 0 0 20",
+	"loop" : false
+}

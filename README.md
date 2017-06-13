@@ -77,6 +77,33 @@ All API functions return promises.
 * `setTemperature(v)` - set the color temperature for all panels; 1200-6500
 * `addAnimation(json)` - store a new animation effect on the Aurora
 
+## Static panel structure
+
+```js
+{
+    "name": "I am a static display",
+    "panels": {
+        "60": {
+            "id": 60, // yes this is redundant
+            "frames": [
+                { r: 0, g: 255, b: 255, w: 0, transition: 20 },
+            ]
+        },
+        "70": {
+            "id": 70,
+            "frames": [
+                { r: 0, g: 255, b: 255, w: 0, transition: 20 },
+                { r: 255, g: 0, b: 255, w: 0, transition: 20 },
+                { r: 255, g: 255, b: 0, w: 0, transition: 20 },
+            ]
+        }
+    }
+  }
+}
+```
+
+The `setPanel()` function takes a single frame object, with id and frame array, and updates *just* that panel in the current static display.
+
 ## License
 
 ISC

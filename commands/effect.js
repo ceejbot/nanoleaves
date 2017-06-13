@@ -10,11 +10,12 @@ function handler(argv)
 {
 	const aurora = new API();
 
-	if (argv.name)
+	if (argv.name.length > 0)
 	{
-		return aurora.setEffect(argv.name).then(() =>
+		const eff = argv.name.join(' ');
+		return aurora.setEffect(eff).then(() =>
 		{
-			console.log(`effect ➜ ${chalk.bold(argv.name)}`);
+			console.log(`effect ➜ ${chalk.bold(eff)}`);
 		});
 	}
 
@@ -25,7 +26,7 @@ function handler(argv)
 }
 
 module.exports = {
-	command:  'effect [name]',
+	command:  'effect [name...]',
 	describe: 'get or set the current effect',
 	builder,
 	handler

@@ -2,6 +2,87 @@
 
 const axios = require('axios');
 
+class Panel
+{
+	constructor(id)
+	{
+		this.id = id;
+		this.frames = [];
+	}
+
+	serialize()
+	{
+		var result = `${this.id} ${this.frames.length}`;
+		this.frames.forEach(f =>
+		{
+			result += ` ${f.r} ${f.g} ${f.b} ${f.w} ${f.transition}`
+		});
+		return result.trim();
+	}
+}
+
+class Animation
+{
+	constructor({ loop, version, animName, animType, animData } = {})
+	{
+		this.loop = loop;
+		this.version = version || '1.0';
+		this.animName = animName || 'unnamed';
+		this.animType = animType || 'static';
+		this.panels = {};
+		if (animData) this.deserialize(animData);
+	}
+
+	deserialize(animData)
+	{
+		// animData structure:
+		// panel count
+		// for each panel: panel id, frame count
+		// for each frame: r, g, b, w, transition time
+
+		const ints = animData.split(' ').map(d => Number(d));
+		this.panelcount = ints.shift();
+
+		for (var i = 0; i < this.panelcount; i++)
+		{
+			const p = new Panel(ints.shift());
+			const count = ints.shift();
+			for (var j = 0; j < count; j++)
+			{
+				p.frames.push({
+					r: ints.shift(),
+					g: ints.shift(),
+					b: ints.shift(),
+					w: ints.shift(),
+					transition: ints.shift(),
+				});
+			}
+
+			this.panels[p.id] = p;
+		}
+	}
+
+	serialize()
+	{
+		const panelIDs = Object.keys(this.panels);
+		const result = {
+			animName: this.animName,
+			loop: this.loop,
+			animType: this.animType,
+			version: this.version,
+			animData: `${panelIDs.length}`,
+		};
+
+		panelIDs.forEach(k =>
+		{
+			const p = this.panels[k];
+			result.animData += ' ' + p.serialize();
+		});
+
+		return result;
+	}
+}
+
 class Aurora
 {
 	constructor(opts)
@@ -65,7 +146,11 @@ class Aurora
 			version : '1.0',
 		}};
 
-		return this.req.put('/effects', body).then(rez => rez.data);
+		return this.req.put('/effects', body).then(rez =>
+		{
+			const effect = new Animation(rez.data)
+			return effect;
+		});
 	}
 
 	animations()
@@ -204,16 +289,46 @@ class Aurora
 		return this.setState('ct', Number(v));
 	}
 
-	display(panels)
+	display(animation)
 	{
-		const write = {
-			command: 'display',
+		const write = Object.assign({
+			command: 'add',
 			version: '1.0',
-			animType: 'static',
-			loop: false,
-			animData: panels.join(' ')
-		};
+		}, animation.serialize());
+		write.loop = write.loop || false;
+		console.log(write)
+
 		return this.req.put('/effects', { write }).then(rez => rez.data);
+	}
+
+	setPanel(input)
+	{
+		var panel;
+		if (input instanceof Panel)
+			panel = input;
+		else
+		{
+			panel = new Panel(input.id);
+			panel.frames.push({
+				r: input.r,
+				g: input.g,
+				b: input.b, w: 0,
+				transition: input.transition || 20,
+			});
+		}
+
+		return this.effect().then(name => this.animation(name))
+		.then(current =>
+		{
+			current.animType = 'static';
+			current.loop = false;
+			current.panels[panel.id] = panel;
+			const write = Object.assign({
+				command: 'display',
+				version: '1.0',
+			}, current.serialize());
+			return this.req.put('/effects', { write }).then(rez => rez.data);
+		});
 	}
 }
 
@@ -222,3 +337,5 @@ Aurora.ANIM_TYPES = new Set(['highlight', 'wheel', 'flow', 'explode', 'fade']);
 Aurora.DIRECTIONS = new Set(['outwards', 'up', 'down', 'left', 'right']);
 
 module.exports = Aurora;
+Aurora.Panel = Panel;
+Aurora.Animation = Animation;

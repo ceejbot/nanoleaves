@@ -2,7 +2,8 @@
 
 const
 	API   = require('../index'),
-	util = require('util');
+	chalk = require('chalk'),
+	util  = require('util');
 
 function builder(yargs) {}
 
@@ -10,14 +11,16 @@ function handler(argv)
 {
 	const aurora = new API();
 
-	return aurora.animation(argv.name).then(animation =>
+	return aurora.animation(argv.name.join(' ')).then(animation =>
 	{
-		console.log(util.inspect(animation, { colors: true }));
+		console.log(util.inspect(animation, { colors: true, depth: 5 }));
+
+		console.log(animation.serialize())
 	});
 }
 
 module.exports = {
-	command : 'animation <name>',
+	command : 'animation <name...>',
 	describe: 'get details about the given animation effect',
 	builder,
 	handler
