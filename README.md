@@ -104,9 +104,15 @@ All API functions return promises.
 }
 ```
 
-The `setPanel()` function takes a single frame object, with id and frame array, and updates *just* that panel in the current static display.
+The `setStaticPanel()` function takes a single frame object, with id and frame array, and updates *just* that panel in the current static display. It is only useful for single frame static displays. You can either send it a `Panel` object with a single frame, or call it with a shorthand like this:
 
-There's an example of setting an entire static animation display in [examples/static-display.js](examples/static-display.js). Use `nanoleaves panels` to get a list of valid panel ids.
+```js
+// set panel 242 to black
+const panel = { id: '242', r: 0, g: 0, b: 0 };
+aurora.setStaticPanel(panel);
+```
+
+There's an example of setting an entire static animation display in [examples/static-display.js](examples/static-display.js). Use `nanoleaves panels` to get a list of valid panel ids for your setup.
 
 ## License
 

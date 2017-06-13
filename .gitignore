@@ -7,3 +7,5 @@ npm-debug.log
 coverage
 .env
 .env2
+.env-home
+.env-work
