@@ -2,7 +2,6 @@
 
 const
 	API   = require('../index'),
-	chalk = require('chalk'),
 	util  = require('util');
 
 function builder(yargs) {}
@@ -14,8 +13,6 @@ function handler(argv)
 	return aurora.animation(argv.name.join(' ')).then(animation =>
 	{
 		console.log(util.inspect(animation, { colors: true, depth: 5 }));
-
-		console.log(animation.serialize())
 	});
 }
 

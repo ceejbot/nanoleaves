@@ -3,15 +3,14 @@ require('dotenv').config();
 const
 	suncalc = require('suncalc');
 
-const API = require('./index');
+const API = require('../index');
 
 const aurora = new API();
+aurora.layout().then(l => console.log(l));
 
 // Goal: a clock made with 12 panels
 // Hour hand in deep color, minute hand in lighter color.
 // Hue and brightness chosen based on time of day.
-
-var currentMonthDay;
 
 function pickColors()
 {

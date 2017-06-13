@@ -1,6 +1,7 @@
-'use strict';;
+'use strict';
 require('dotenv').config();
 const API = require('../index');
+
 const aurora = new API();
 
 const effect = new API.Animation({

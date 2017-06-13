@@ -15,7 +15,7 @@ class Panel
 		var result = `${this.id} ${this.frames.length}`;
 		this.frames.forEach(f =>
 		{
-			result += ` ${f.r} ${f.g} ${f.b} ${f.w} ${f.transition}`
+			result += ` ${f.r} ${f.g} ${f.b} ${f.w} ${f.transition}`;
 		});
 		return result.trim();
 	}
@@ -148,7 +148,7 @@ class Aurora
 
 		return this.req.put('/effects', body).then(rez =>
 		{
-			const effect = new Animation(rez.data)
+			const effect = new Animation(rez.data);
 			return effect;
 		});
 	}
@@ -296,7 +296,6 @@ class Aurora
 			version: '1.0',
 		}, animation.serialize());
 		write.loop = write.loop || false;
-		console.log(write)
 
 		return this.req.put('/effects', { write }).then(rez => rez.data);
 	}

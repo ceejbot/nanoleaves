@@ -220,7 +220,7 @@ describe('nanoleaves', function()
 			return Promise.resolve({ data: { }});
 		});
 
-		return api.display([1, 2, 3, 4]).then(r =>
+		return api.display(new Aurora.Animation()).then(r =>
 		{
 			stub.called.must.be.true();
 			stub.calledWith('/effects').must.be.true();
