@@ -344,5 +344,25 @@ describe('nanoleaves', function()
 				stub.restore();
 			});
 		});
+
+		it('setPanel() fetches the current effect', function()
+		{
+			const api = new Aurora();
+			const getStub = sinon.stub(api.req, 'get').callsFake(() =>
+			{
+				return Promise.resolve({ data: { }});
+			});
+
+			const putStub = sinon.stub(api.req, 'put').callsFake(() =>
+			{
+				return Promise.resolve({ data: { }});
+			});
+
+			return api.setStaticPanel({ id: '100', r: 0,  g: 0,  b: 0 }).then(r =>
+			{
+				getStub.called.must.be.true();
+				putStub.called.must.be.true();
+			});
+		});
 	});
 });

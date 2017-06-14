@@ -76,40 +76,39 @@ All API functions return promises.
 * `temperature()` - get the color temperature for all panels
 * `setTemperature(v)` - set the color temperature for all panels; 1200-6500
 * `addAnimation(json)` - store a new animation effect on the Aurora
+* `setStaticPanel(data)` - set a panel or a list of panels to a static color; see below
 
 ## Static panel structure
 
+The `setStaticPanel()` function pokes a single color into a specific panel. It is only useful for single frame static displays.  You can call this a couple of ways. This snippet sets panel id 100 to black:
+
 ```js
-{
-    "animName": "I am a static display",
-    "animType": "static",
-    "loop": false,
-    "panels": {
-        "60": {
-            "id": 60, // yes this is redundant
-            "frames": [
-                { r: 0, g: 255, b: 255, w: 0, transition: 20 },
-            ]
-        },
-        "70": {
-            "id": 70,
-            "frames": [
-                { r: 0, g: 255, b: 255, w: 0, transition: 20 },
-                { r: 255, g: 0, b: 255, w: 0, transition: 20 },
-                { r: 255, g: 255, b: 0, w: 0, transition: 20 },
-            ]
-        }
-    }
-  }
-}
+const panel = { id: '100', r: 0,  g: 0,  b: 0 };
+aurora.setStaticPanel(panel);
 ```
 
-The `setStaticPanel()` function takes a single frame object, with id and frame array, and updates *just* that panel in the current static display. It is only useful for single frame static displays. You can either send it a `Panel` object with a single frame, or call it with a shorthand like this:
+This code does the equivalent with a full panel object:
 
 ```js
-// set panel 242 to black
-const panel = { id: '242', r: 0, g: 0, b: 0 };
+const Aurora = require('nanoleaves');
+
+const aurora = new Aurora();
+const panel = new Aurora.Panel('100');
+panel.frames = [{ r: 0, g: 0, b: 0, w: 0, transition: 50}];
+
 aurora.setStaticPanel(panel);
+```
+
+You can also send a list of panels to `setStaticPanel()`:
+
+```js
+const list = [
+	{ id: 71, r: 255, g: 0, b: 0, transition: 50 },
+	{ id: 26, r: 255, g: 51, b: 17, transition: 50 },
+	{ id: 72, r: 255, g: 102, b: 68, transition: 50 },
+	{ id: 167, r: 255, g: 153, b: 51, transition: 50 },
+];
+aurora.setStaticPanel(list);
 ```
 
 There's an example of setting an entire static animation display in [examples/static-display.js](examples/static-display.js). Use `nanoleaves panels` to get a list of valid panel ids for your setup.
