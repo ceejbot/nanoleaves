@@ -1,0 +1,58 @@
+{
+	"explodeFactor": 0.5,
+	"flowFactor": 0,
+	"animName": "Subtle bursts",
+	"colorType": "HSB",
+	"direction": "outward",
+	"animType": "explode",
+	"windowSize": 2,
+	"brightnessRange": {
+		"minValue": 33,
+		"maxValue": 67
+	},
+	"transTime": {
+		"minValue": 50,
+		"maxValue": 150
+	},
+	"loop": true,
+	"palette": [{
+			"brightness": 50,
+			"hue": 227,
+			"saturation": 100
+		},
+		{
+			"brightness": 50,
+			"hue": 104,
+			"saturation": 100
+		},
+		{
+			"brightness": 50,
+			"hue": 24,
+			"saturation": 100
+		},
+		{
+			"brightness": 50,
+			"hue": 2100,
+			"saturation": 100
+		},
+		{
+			"brightness": 50,
+			"hue": 54,
+			"saturation": 100
+		},
+		{
+			"brightness": 50,
+			"hue": 311,
+			"saturation": 100
+		},
+		{
+			"brightness": 50,
+			"hue": 0,
+			"saturation": 100
+		}
+	],
+	"delayTime": {
+		"minValue": 2,
+		"maxValue": 10
+	}
+}
