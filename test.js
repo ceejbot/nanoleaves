@@ -57,8 +57,7 @@ describe('nanoleaves', function()
 			const r = a.serialize();
 			r.must.have.property('animData');
 			const b = new Aurora.Animation(r);
-			a.must.eql(b);
-//			r.animData.must.equal(fixture.animData);
+			b.serialize().must.eql(r)
 		});
 
 	});

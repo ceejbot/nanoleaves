@@ -4,6 +4,7 @@ const API = require('../index');
 
 const aurora = new API();
 
+/*
 const homelist = [
 	{ id: 143, frames: [{ r: 255, g: 0, b: 0, w: 0, transition: 50 }]},
 	{ id: 34, frames: [{ r: 255, g: 51, b: 17, w: 0, transition: 50 }]},
@@ -18,6 +19,7 @@ const homelist = [
 	{ id: 4, frames: [{ r: 51, g: 17, b: 187, w: 0, transition: 50 }]},
 	{ id: 115, frames: [{ r: 68, g: 34, b: 153, w: 0, transition: 50 }]},
 ];
+*/
 
 const officelist = [
 	{ id: 71, r: 255, g: 0, b: 0, transition: 50 },
